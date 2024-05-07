@@ -8,11 +8,15 @@ export const checkSubscription = async () => {
   if (!session?.user) {
     return false;
   }
+
+
   const userSubscription = await prisma.userSubscription.findUnique({
     where: {
       userId: session.user.id,
     },
   });
+
+  
   if (!userSubscription) {
     return false;
   }
